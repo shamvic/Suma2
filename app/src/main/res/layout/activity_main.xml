@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity"
+    android:background="@color/background_app"
+    android:orientation="vertical"
+    android:padding="16dp">
+    <Button
+        android:id="@+id/btnMultiplication"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/multiplication"
+        android:textSize="24sp"
+        android:layout_margin="12dp"
+        style="?attr/materialButtonOutlinedStyle"
+        app:strokeColor="@color/border_style"
+        app:cornerRadius="20dp"
+        app:strokeWidth="2dp"
+        android:textColor="@color/border_style"
+        />
+
+    <Button
+        android:id="@+id/btnDivision"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/division"
+        android:textSize="24sp"
+        android:layout_marginHorizontal="12dp"
+        style="?attr/materialButtonOutlinedStyle"
+        app:strokeColor="@color/border_style"
+        app:cornerRadius="20dp"
+        app:strokeWidth="2dp"
+        android:textColor="@color/border_style"
+        />
+
+    <Button
+        android:id="@+id/btnAddition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/addition"
+        android:textSize="24sp"
+        android:layout_margin="12dp"
+        style="?attr/materialButtonOutlinedStyle"
+        app:strokeColor="@color/border_style"
+        app:cornerRadius="20dp"
+        app:strokeWidth="2dp"
+        android:textColor="@color/border_style"/>
+
+
+</LinearLayout>

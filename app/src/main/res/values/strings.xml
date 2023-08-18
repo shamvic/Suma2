@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Barabashka</string>
+
+    <string name="multiplication">Multiplicación</string>
+    <string name="division">División</string>
+    <string name="addition">Suma</string>
+    <string name="done">Hecho</string>
+    <string name="menu">Menu</string>
+    <string name="settings">Ajustes</string>
+    <string name="begin">Comenzar</string>
+    <string name="text_etSolution"></string>
+    <string name="number_of_members">Número de membros:</string>
+    <string name="rate">Número en segundos:</string>
+    <string name="settings_done">Hecho</string>
+    <string name="settings_cancel">Cancelar</string>
+
+</resources>
