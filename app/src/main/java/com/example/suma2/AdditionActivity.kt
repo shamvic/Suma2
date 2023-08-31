@@ -64,7 +64,7 @@ class AdditionActivity : AppCompatActivity() {
 
     private var numSequence:Int=6       //total number of add
     private var delayInSeconds:Long=3
-    private var timeInSeconds:Long=9
+    private var timeInSeconds:Long=3
     private var swNumDig:Boolean=false
 
     private val firsNumSeconds:Long=5
