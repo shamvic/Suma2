@@ -70,7 +70,7 @@ class AdditionActivity : AppCompatActivity() {
     private val firsNumSeconds:Long=5
     private var introDelay:Boolean=false
 
-
+    private var speakSome:String=""
 
     private var secondNum:Int=0         //second number of sequence
     private var delaySum:Int=8          // seconds
@@ -139,7 +139,7 @@ class AdditionActivity : AppCompatActivity() {
 
     private fun initListeners() {
 
-        // XXXXXXXXXXXXXXX   BUTTON BEGIN  XX
+        // XXXXXXXXXXXXXXX   BUTTON BEGIN  XXXXXXXXXXXXXXXXXXXXXXX
 
         btnBegin.setOnClickListener {
             currSequence=0
@@ -169,7 +169,7 @@ class AdditionActivity : AppCompatActivity() {
 
         btnDone.setOnClickListener {
 
-
+            Log.d(tag,"btnDone isTimerRunning=${isTimerRunning.toString()}")
             tvCorrectSolution.setVisibility(View.VISIBLE)
 
             val result1:String = etSolution.getText().toString()
@@ -182,7 +182,10 @@ class AdditionActivity : AppCompatActivity() {
 
                 //Toast.makeText(applicationContext, "¡Hecho!", Toast.LENGTH_LONG).show()
                 //playNew()
-                playBeep(beepNew)
+                //playBeep(beepNew)
+                speakSome="Правильно!!!"
+                speaking(speakSome)
+
                 Toast.makeText(applicationContext,"¡Correcto!",Toast.LENGTH_LONG).show()
 
 
@@ -192,8 +195,10 @@ class AdditionActivity : AppCompatActivity() {
             }
             else {
                 //playError()
-                playBeep(beepError)
+                //playBeep(beepError)
                 //Toast.makeText(applicationContext, "¡NO es Correcto!", Toast.LENGTH_LONG).show()
+                speakSome="Не правильно!!!"
+                speaking(speakSome)
                 tvQualification.text="X"
                 tvQualification.setTextColor(ContextCompat.getColor(this, R.color.red_700))
 
@@ -217,7 +222,9 @@ class AdditionActivity : AppCompatActivity() {
     }
 
 
-    private fun playBeep(beep:Int) {
+     fun playBeep(beep:Int) {
+
+
         // Play the sound.mp3 file
         //val beepError = resources.getIdentifier("beep_10", "raw",packageName)
         mediaPlayer = MediaPlayer.create(this, beep)
@@ -230,7 +237,7 @@ class AdditionActivity : AppCompatActivity() {
         }, 1000)
     }
 
-
+    //XXXXXXXXXXXXXXXXXXXXXXXXX CONTINUE NUM SEQUENC   --> INIT SECOND NUMBER  XXXXXX
     private fun continueNumSequence() {
         initSecondNumber()
         tvNumber2.setTextColor(ContextCompat.getColor(this, R.color.green_700))
@@ -238,7 +245,7 @@ class AdditionActivity : AppCompatActivity() {
         Log.d(tag,"isTimerRunning=${isTimerRunning.toString()}")
     }
 
-    // XXXXXXXXXXXXXXXXX BEGIN SEQUENCE  XXXXXXXX
+    // XXXXXXXXXXXXXXXXX BEGIN NUM SEQUENCE  XXXXXXXX
     private fun beginNumSequence() {
         initFirstNumber()
         //initSecondNumber()
@@ -250,7 +257,7 @@ class AdditionActivity : AppCompatActivity() {
 
     }
 
-
+        //   XXXXXXXXXXXXXXXXXX INIT FIRST NUMBER  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     private fun initFirstNumber() {
         if (!swNumDig) num1 = getRandom()
         else num1=getRandom2N()
@@ -278,6 +285,8 @@ class AdditionActivity : AppCompatActivity() {
         // invoke the method with the text and the language
         TextToSpeechManager.instance.speak(toSpeak, language)
     }
+
+    //XXXXXXXXXXXXXXXXXXXXXXXXXXXX  INIT SECOND NUMBER  XXXXXX
     private fun initSecondNumber() {
 
         if (!swNumDig) num2 = getRandom()
@@ -298,6 +307,16 @@ class AdditionActivity : AppCompatActivity() {
         //  speech(toSpeech)
 
     }
+
+    private fun answer(){
+          val toSpeech = "ваш ответ..."
+          speech(toSpeech)
+    }
+    private fun speaking(speakSome:String){
+        val toSpeech = speakSome
+        speech(toSpeech)
+    }
+
 
     //  xxxxxxxxxxxxxxxxxxxxxxx  Random Number  xxxxxxxxxxxxxxxxxxxxxxx
     private fun getRandom(): Int {                  // RANDOM FROM -99 TO 99 (EXCLUDING -11-+11)
@@ -348,6 +367,8 @@ class AdditionActivity : AppCompatActivity() {
     //  XXXXXXXXXXXXXXX   TIMER - TEMPORIZADOR  XXXXXXXXXXXXXXX
     private fun startTimer(durationInMillis: Long) {
 
+
+
         if (isTimerRunning) {
             // Timer is already running, no need to start a new one
             // Таймер уже запущен, новый запускать не нужно
@@ -396,14 +417,18 @@ class AdditionActivity : AppCompatActivity() {
 
                 }else if (currSequence > numSequence){
                     //isTimerRunning = false
-                    tvCorrectSolution.text=num1.toString()
-                    playBeep(beepNew)   //pitido al terminar sumar
+                    tvCorrectSolution.text=resultCorSum   //num1.toString()
+                    //playBeep(beepNew)   //pitido al terminar sumar
                     //tvCorrectSolution.setVisibility(View.VISIBLE)
-                    Log.d(tag,"tvCorrectSolution=${tvCorrectSolution.toString()}")
+
                     Log.d(tag,"isTimerRunning=${isTimerRunning.toString()}")
                     Log.d(tag,"num1=${num1.toString()}")
                     Log.d(tag,"resutCorSum=${resultCorSum.toString()}")
+                    Log.d(tag,"tvCorrectSolution=$resultCorSum")
 
+                    speaking("Ваш ответ...")
+
+                    //playBeep(beepNew)         // pitido cuando termina el tiempo
 
                 }
 
